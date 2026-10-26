@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -20,6 +20,9 @@ import {
 import { store } from './data/store.js';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// three.js is heavy, so the 3D assembly section ships in its own chunk.
+const AssemblyScroll = lazy(() => import('./components/AssemblyScroll.jsx'));
 
 function readCart() {
   try {
@@ -236,6 +239,7 @@ export default function App() {
         </a>
         <nav className={`main-nav ${menuOpen ? 'is-open' : ''}`} aria-label="Navigation principale">
           <a href="#catalogue" onClick={() => setMenuOpen(false)}>Le catalogue</a>
+          <a href="#montage" onClick={() => setMenuOpen(false)}>Le montage</a>
           <a href="#maison" onClick={() => setMenuOpen(false)}>La maison</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </nav>
@@ -310,6 +314,10 @@ export default function App() {
           </div> : <div className="empty-catalog"><span className="empty-icon"><Bike size={28} strokeWidth={1.2} /></span><p className="eyebrow">Catalogue en préparation</p><h3>{category === 'piece' ? 'Les pièces arrivent bientôt.' : 'Aucun modèle ne correspond.'}</h3><p>{category === 'piece' ? 'Écrivez-nous pour vérifier une pièce ou sa compatibilité.' : 'Essayez une autre recherche ou contactez la boutique.'}</p><button className="text-link" type="button" onClick={() => { setSearch(''); setBrand('Toutes les marques'); }}>Réinitialiser les filtres <ArrowRight size={15} /></button></div>}
           <div className="catalog-footnote"><span><Check size={14} /> Tarifs confirmés avec la boutique</span><span>Les visuels peuvent varier selon le modèle.</span></div>
         </section>
+
+        <Suspense fallback={<section className="assembly-section" id="montage" aria-hidden="true" />}>
+          <AssemblyScroll />
+        </Suspense>
 
         <section className="manifesto-section" id="maison">
           <div className="manifesto-image"><div className="manifesto-image-inner"><div className="manifesto-image-placeholder"><Bike size={78} strokeWidth={.8} /><span>Une passion, une maison</span></div></div><span className="manifesto-image-label">SUR LE TERRAIN / AVEC VOUS</span></div>

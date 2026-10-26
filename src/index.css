@@ -94,8 +94,8 @@ a { color: inherit; text-decoration: none; }
 .catalog-section .eyebrow { color: #8a8f52; }
 .catalog-section .eyebrow-line { background: var(--accent); }
 .section-heading { display: flex; justify-content: space-between; align-items: end; gap: 40px; }
-.section-heading h2, .manifesto-copy h2, .contact-section h2 { margin: 17px 0 0; font-family: var(--display); font-size: 72px; line-height: .94; font-weight: 500; letter-spacing: 0; }
-.section-heading h2 em, .manifesto-copy h2 em, .contact-section h2 em { color: var(--accent); font-style: normal; }
+.section-heading h2, .manifesto-copy h2, .contact-section h2, .assembly-copy h2 { margin: 17px 0 0; font-family: var(--display); font-size: 72px; line-height: .94; font-weight: 500; letter-spacing: 0; }
+.section-heading h2 em, .manifesto-copy h2 em, .contact-section h2 em, .assembly-copy h2 em { color: var(--accent); font-style: normal; }
 .section-intro { width: min(330px, 35%); margin: 0 0 4px; color: #77776f; font-size: 12px; line-height: 1.8; }
 .catalog-toolbar { margin-top: 52px; padding-bottom: 0; border-bottom: 1px solid rgba(23,24,22,.18); display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .category-tabs { height: 55px; display: flex; gap: 24px; }
@@ -134,6 +134,29 @@ a { color: inherit; text-decoration: none; }
 .empty-catalog .text-link { color: var(--ink); }
 .catalog-footnote { margin-top: 22px; display: flex; justify-content: space-between; color: #77776f; font-size: 9px; }
 .catalog-footnote span:first-child { display: flex; gap: 6px; align-items: center; color: #5c6b34; }
+
+.assembly-section { --assembly-units: 9; height: calc(var(--assembly-units) * 70vh + 100vh); position: relative; border-top: 1px solid rgba(23,24,22,.12); color: var(--ink); background: radial-gradient(ellipse at 62% 55%, #ffffff 0%, #ece9e0 46%, #dedad0 100%); }
+.assembly-section.is-static { height: auto; }
+.assembly-sticky { height: 100vh; height: 100svh; position: sticky; top: 0; overflow: hidden; }
+.assembly-section.is-static .assembly-sticky { height: auto; min-height: 560px; position: relative; }
+.assembly-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.assembly-section .eyebrow { color: #8a8f52; }
+.assembly-section .eyebrow-line { background: var(--accent); }
+.assembly-copy { position: absolute; z-index: 1; top: 13vh; left: 8.5vw; width: min(300px, 28vw); pointer-events: none; }
+.assembly-steps { margin: 34px 0 0; padding: 0; border-top: 1px solid rgba(23,24,22,.14); list-style: none; }
+.assembly-steps li { padding: 9px 0; border-bottom: 1px solid rgba(23,24,22,.1); display: flex; align-items: center; gap: 14px; color: #9a998f; font-size: 11px; transition: color .3s; }
+.assembly-steps li span { width: 18px; font-family: var(--display); font-size: 11px; }
+.assembly-steps li.is-done { color: #55564f; }
+.assembly-steps li.is-active { color: var(--ink); font-weight: 700; }
+.assembly-steps li.is-active span { color: var(--accent); }
+.assembly-caption { position: absolute; z-index: 1; right: 6vw; bottom: 8vh; width: min(320px, 30vw); padding: 19px 21px; border: 1px solid rgba(23,24,22,.12); background: rgba(244,241,233,.86); backdrop-filter: blur(6px); }
+.assembly-count { color: var(--accent); font-family: var(--display); font-size: 12px; letter-spacing: .08em; }
+.assembly-caption h3 { margin: 7px 0 0; font-family: var(--display); font-size: 27px; font-weight: 500; }
+.assembly-caption p { margin: 8px 0 0; color: #66665e; font-size: 11px; line-height: 1.7; }
+.assembly-progress { height: 2px; margin-top: 16px; background: rgba(23,24,22,.12); }
+.assembly-progress span { height: 100%; display: block; transform: scaleX(0); transform-origin: left; background: var(--accent); }
+.assembly-fallback { position: absolute; right: 8.5vw; bottom: 12vh; max-width: 280px; color: #66665e; font-size: 12px; line-height: 1.7; }
+.assembly-note { position: absolute; left: 8.5vw; bottom: 4vh; color: #8a897f; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
 
 .manifesto-section { min-height: 570px; padding: 95px 11vw; display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 9vw; background: #252622; }
 .manifesto-image { position: relative; }
@@ -204,6 +227,10 @@ a { color: inherit; text-decoration: none; }
   .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 15px; }
   .product-media { height: clamp(240px, 41vw, 390px); }
   .manifesto-section { padding-right: 8vw; padding-left: 8vw; gap: 6vw; }
+  .assembly-copy { left: 6vw; width: 40vw; }
+  .assembly-copy h2 { font-size: 56px; }
+  .assembly-steps { display: none; }
+  .assembly-caption { width: min(320px, 44vw); }
 }
 
 @media (max-width: 640px) {
@@ -260,6 +287,15 @@ a { color: inherit; text-decoration: none; }
   .product-meta button { width: 28px; height: 28px; }
   .catalog-footnote { gap: 12px; align-items: flex-start; flex-direction: column; font-size: 8px; }
   .empty-catalog { min-height: 275px; padding: 20px; }
+  .assembly-section { --assembly-units: 9; height: calc(var(--assembly-units) * 60vh + 100vh); }
+  .assembly-copy { top: 44px; left: 20px; right: 20px; width: auto; }
+  .assembly-copy h2 { margin-top: 13px; font-size: 44px; }
+  .assembly-caption { left: 16px; right: 16px; bottom: 74px; width: auto; padding: 15px 16px; }
+  .assembly-caption h3 { font-size: 21px; }
+  .assembly-caption p { font-size: 10px; }
+  .assembly-progress { margin-top: 12px; }
+  .assembly-fallback { left: 20px; right: 20px; bottom: 74px; }
+  .assembly-note { left: 20px; bottom: 30px; }
   .manifesto-section { padding: 55px 20px 58px; grid-template-columns: 1fr; gap: 43px; }
   .manifesto-image-inner { height: min(88vw, 380px); }
   .manifesto-image-label { left: -5px; bottom: 11px; font-size: 7px; }

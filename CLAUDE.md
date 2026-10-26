@@ -36,6 +36,7 @@ Flux de données :
 - Commande : `orderOnWhatsApp` construit un lien `wa.me` prérempli. Le total n'apparaît que si tous les articles ont un prix.
 - Prix : `price: null` signifie « Prix sur demande » (XOF). Ne jamais inventer un prix ni une compatibilité de pièce.
 - Animations : GSAP dans des `useEffect`, avec `gsap.context` pour pouvoir les nettoyer.
+- Section 3D « Le montage » : `src/components/AssemblyScroll.jsx` est chargé en lazy, dans un chunk séparé qui contient three.js. Le défilement pilote l'assemblage avec une zone sticky et ScrollTrigger. Le modèle est construit en code, pièce par pièce, dans `src/components/motorcycleModel.js`. Le tableau `STEPS` du composant doit suivre l'ordre des étapes de `buildMotorcycle()`. Les médias de référence de `UseMedia_3D/` sont ignorés par Git, car ils contiennent des contenus de tiers.
 - Données structurées : `index.html` contient un JSON-LD statique ; `App.jsx` en injecte un second selon le catalogue. Ils doivent rester cohérents.
 
 ## Déploiement

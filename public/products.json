@@ -1,0 +1,38 @@
+[
+  {
+    "id": "apsonic-125-12",
+    "brand": "Apsonic",
+    "name": "Apsonic 125-12",
+    "category": "moto",
+    "price": null,
+    "imageMatch": ["apsonic", "125", "12"],
+    "label": "Série 125"
+  },
+  {
+    "id": "lobane-125-8",
+    "brand": "Lobane",
+    "name": "Lobane 125-8",
+    "category": "moto",
+    "price": null,
+    "imageMatch": ["lobane", "125", "8"],
+    "label": "Série 125"
+  },
+  {
+    "id": "lobane-rock-z-125",
+    "brand": "Lobane",
+    "name": "Lobane Rock Z 125",
+    "category": "moto",
+    "price": null,
+    "imageMatch": ["lobane", "rock", "125"],
+    "label": "Série Rock"
+  },
+  {
+    "id": "lobane-dame-125",
+    "brand": "Lobane",
+    "name": "Lobane Dame",
+    "category": "moto",
+    "price": null,
+    "imageMatch": ["lobane", "dame"],
+    "label": "Format urbain"
+  }
+]
